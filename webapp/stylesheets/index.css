@@ -1,0 +1,84 @@
+@CHARSET "US-ASCII";	
+	/* 브라우저 별로 다른 default css값을 초기화 */
+	/* System Name, CSS Version_Creater_Date */
+	/* Common */ 
+	body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare a,button,select{margin:0;padding:0}
+	body,input,textarea,select,button,table{font-family:'돋움',Dotum,AppleGothic,sans- serif;font-size:1em}
+	img,fieldset{border:0}
+	ul,ol{list-style:none}
+	em,address{font-style:normal} a{text-decoration:none} a:hover,a:active,a:focus{text-decoration:underline}
+
+
+	div#wrap{
+		width : 100%;
+		margin-top : 30px;
+	}
+	
+	#header > h1 {
+		font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+		font-size : 4em;
+		font-weight : 100; 		/*default value : 4000 */
+		letter-spacing : 0.1em;
+		text-align : center;
+		margin-top : 30px;	
+	}
+	
+	#container{
+		text-align : center;
+		margin-top : 30px;
+	}
+	
+	#container label{
+		font-weight : 100; 		/*default value : 4000 */
+		font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+		letter-spacing : 0.07em;
+		display : inline-block;
+		width : 85px;
+		height : 50px;
+		text-align : left;
+	}
+	
+
+	#container form input[type=text], input[type=password]{
+		font-weight : 100; 		/*default value : 4000 */
+		font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+		letter-spacing : 0.07em;
+		width : 250px;
+		height : 50px;
+		border : 1px solid lightgrey;
+		background : white;
+		margin : 2px;
+		padding-left : 3px;
+		text-align : center;
+	}
+	
+	#container form input[type=submit]{
+		width : 300px;
+		height : 60px;
+		border : 1px solid lightblue;
+		background : white;
+		margin-top : 30px;
+		margin-bottom : 30px;
+		border-radius : 1em;
+	}
+	
+	#footer {
+		text-align :center;
+		margin-top : 50px;
+		padding-top : 20px;
+		margin-bottom : 50px;
+		border-top : 1px solid lightgrey;
+	}
+	
+	#footer a input {
+		border : 1px solid lightgreen;
+		background:white;
+		width : 60px;
+		height : 60px;
+		font-weight : 100; 		/*default value : 4000 */
+		font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+		letter-spacing : 0.07em;
+		font-size : 1em;
+		text-align : center;
+	}
+	

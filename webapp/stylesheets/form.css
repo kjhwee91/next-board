@@ -1,0 +1,90 @@
+@CHARSET "US-ASCII";
+
+/* 브라우저 별로 다른 default css값을 초기화 */
+/* System Name, CSS Version_Creater_Date */
+/* Common */ 
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare a,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-family:'돋움',Dotum,AppleGothic,sans- serif;font-size:1em}
+img,fieldset{border:0}
+ul,ol{list-style:none}
+em,address{font-style:normal} a{text-decoration:none} a:hover,a:active,a:focus{text-decoration:underline}
+
+div#wrap{
+	width : 100%;
+}
+
+#header{
+	margin-left : auto;
+	margin-right : auto;
+}
+
+#header > h1 {
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size : 4em;
+	font-weight : 100; 		/*default value : 4000 */
+	letter-spacing : 0.1em;
+	text-align : center;
+	margin-top : 30px;	
+}
+
+#container{
+	margin-top : 30px;
+	text-align : center;
+}
+
+#container input[type=text]{
+	border : 1px solid lightgrey;
+	width : 600px;
+	height : 50px;
+	padding : 2px;
+}
+
+#container textarea {
+	border : 1px solid lightgrey;
+	width : 600px;
+	margin-top:20px;
+	resize : none;
+}
+
+#container input[type=submit], input[type=reset]{
+	width : 100px;
+	height : 60px;
+	border : 1px solid lightblue;
+	background : white;
+	margin-top : 30px;
+	margin-bottom : 30px;
+	border-radius : 1em;
+	font-weight : 100; 		/*default value : 4000 */
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	letter-spacing : 0.07em;
+	font-size : 1em;
+}
+
+
+#container input[type=file]{
+	height : 50px;
+	border : none;
+	padding : 2px;
+}
+
+
+
+#footer {
+	text-align :center;
+	margin-top : 50px;
+	padding-top : 20px;
+	margin-bottom : 50px;
+	border-top : 1px solid lightgrey;
+}
+
+#footer a input {
+	border : 1px solid lightgreen;
+	background:white;
+	width : 60px;
+	height : 60px;
+	font-weight : 100; 		/*default value : 4000 */
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	letter-spacing : 0.07em;
+	font-size : 1em;
+	text-align : center;
+}
