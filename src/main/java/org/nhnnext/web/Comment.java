@@ -11,34 +11,47 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
 public class Comment {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@Column(length=1000, nullable=false)
-	private String contents;
-	
-	@JsonIgnore
 	@ManyToOne
 	private Board board;
+
+	@Column(length=1000, nullable=false)
+	private String content;
 	
-	public Comment() {
+	public Comment(){}
+	
+	public Comment(Board board, String content){
+		this.setBoard(board);
+		this.content = content;
 	}
 	
-	public Comment(String contents, Board board) {
-		this.contents = contents;
+	
+	public Board getBoard(){
+		return board;
+	}
+
+	public void setBoard(Board board) {
 		this.board = board;
+	}
+	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Long getId() {
 		return id;
 	}
-	
-	public String getContents() {
-		return contents;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	
-	public Board getBoard() {
-		return board;
-	}
+
 }

@@ -13,30 +13,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CommentController {
-	private static final Logger log = LoggerFactory.getLogger(CommentController.class);
-	
+
+	@Autowired
+	private CommentRepository commentRepository;
 	@Autowired
 	private BoardRepository boardRepository;
 	
-	@Autowired
-	private CommentRepository commentRepository;
 	
-	@RequestMapping(value="/board/{id}/comments", method=RequestMethod.POST)
-	public String create(@PathVariable Long id, String contents) {
-		log.debug("board id : {}, contents : {}", id, contents);
+	@RequestMapping(value = "/putcomments/{id}", method=RequestMethod.POST)
+	public String create(@PathVariable Long id, String content){
 		Board board = boardRepository.findOne(id);
-		Comment comment = new Comment(contents, board);
-		commentRepository.save(comment);
-		return "redirect:/board";
+		Comment cmt = new Comment(board, content);
+		commentRepository.save(cmt);
+		return "redirect:/board/{id}";
 	}
 	
-	@RequestMapping(value="/board/{id}/comments.json", method=RequestMethod.POST)
-	public @ResponseBody Comment createAndShow(@PathVariable Long id, String contents) {
-		log.debug("board id : {}, contents : {}", id, contents);
-		Board board = boardRepository.findOne(id);
-		Comment comment = new Comment(contents, board);
-		return commentRepository.save(comment);
-	}
 }
 
 

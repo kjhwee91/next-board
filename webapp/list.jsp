@@ -1,99 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/listMain.css" />
-</head>
+	<link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/list.css"/>
 
+<script>
+
+	function countText(){
+		var allTxtList = document.querySelectorAll('#textSection');
+		for (var i=0; i<allTxtList.length;i++){
+			var currentNode = allTxtList[i];
+			var spanText = currentNode.querySelectorAll('p').length;
+			console.log(spanText);
+			var prt = currentNode.parentNode;
+			//prt.querySelector('div#countTxt').innerText=spanText;
+		}
+	}
+	
+	window.onload = countText;
+
+</script>
+
+</head>
 <body>
 <div id="wrap">
- 	 <nav>
-	 	<ul>
-	 		<c:choose>
-	 		<c:when test="${empty sessionScope.userId}">
-	 		<li><a href="/login/form">로그인</a></li>
-	 		</c:when>
-	 		<c:otherwise>
-	 		<li>${sessionScope.userId}님 환영합니다.</li>
-	 		</c:otherwise>
-	 		</c:choose>
-	 	</ul>
-	 </nav>
-	 
-	 <section id="writePost">
-	 	<div id="formArea">
-			<form action="/board" method="post" enctype="multipart/form-data">
-				 제목  <input type="text" name="title" size=40> <br />
-				<div class="textareaWrap">
-						<textarea name="contents" rows="3" cols="60" placeholder="새로운 글 올리기..."></textarea>
-				</div>
-				<input type="file" name="filename"> <br />
-				<input type="submit" value="전송합니다">
-				<input type="reset" value="지웁니다">
-			</form>
-		</div>
-	 </section>
-    
-	<c:forEach items="${boards}" var="board">
-		<section>
-	 		<article>
-			 	<h1>${board.title}</h1>
-				<c:if test="${not empty board.fileName}">
-				 <div class="imgWrap">
-				 	<img src="/images/${board.fileName}" />
-				 </div>
-				</c:if>
-				<div class="contents">
-					<p> ${board.contents}</p>
-				</div>
-			</article>
-			<div class="commentWrap">
-				<c:if test="${empty board.comments}">
-					<div> <span>댓글이 없습니다 ㅡ.ㅡ;; </span></div>
-				</c:if>
-				
-				<div class="commentTitle">
-					<div class="commentNum">
-						 <span>2</span>개의 댓글
-					</div>
-					<div class="commControl">
-						<a href="#">댓글 보여줘</a>
-					</div>
-				</div>
-				<div class="commentBody">
-					<div class="commentList">
-						<c:forEach items="${board.comments}" var="comment">
-							<p>
-								<span>${comment.contents}</span>
-							</p>
-						</c:forEach>
-					</div>
-					<div class="commentWrite">
-						<form action="/board/${board.id}/comments" name="commentWrite" method="post">
-							<div class="textareaWrap">
-								<input type="hidden" name="id" value="${board.id}">
-								<textarea name="contents" rows="1" cols="60" placeholder="여기에 댓글을 쓰시면 되요..."></textarea>
-							</div>
-							<input type="submit" value="댓글쓰기"/>
-						</form>
-					</div>
-				</div>
-			</div>
-
-		</section>
-	</c:forEach>
-	<div id="dimmedLayer">
+	<div id="header">
+		<h1>list view</h1>
 	</div>
- </div>
- 
- <div id="imgviewer">
-	<img src="" />
+	
+	<div id="container">
+		
+		<c:forEach items="${boards}" var="board"> 
+			
+			<div id ="board">
+				<div id="photoSection">
+					<c:choose>
+						<c:when test="${not empty board.filename}"> 
+							<img src="/images/${board.filename}"><br>
+						</c:when>	
+
+						<c:otherwise>
+							<img src="/images/tmp.gif">
+						</c:otherwise>
+					</c:choose>
+				</div>
+				
+				<div id="textSection">
+					<p><span id="title">${board.title}</span><p>
+					<p><span id="content">${board.contents}</span></p>
+					<c:choose>
+						<c:when test="${not empty board.filename}"> 
+							<p><span id="filename">${board.filename}</span></p>
+						</c:when>	
+
+						<c:otherwise>
+							<p><span id="filename">no image</span></p>
+						</c:otherwise>
+					</c:choose>
+					<a href="/board/${board.id}"><input type="button" value="more"></a>
+				</div>
+				<div id="countTxt"></div>
+				
+
+			</div>
+		
+		</c:forEach>
+	</div>
+	
+	<div id="footer">
+		<a href="/"><input type="button" value="main"></a>
+		<a href="/board/form"><input type="button" value="write"></a>
+		<a href="/login/join"><input type="button" value="join"></a>
+	</div>
+	
 </div>
- <script src="/javascripts/listMain.js"></script>
+
 </body>
 </html>

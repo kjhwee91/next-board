@@ -1,29 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE htm>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/newWrite.css" />
+	<title>Photo Board</title>
+	<link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/form.css"/>
 </head>
+
 <body>
-<div id="wrap">
-<header> 
-	<h1> new post! </h1>
-</header>
-	<div id="formArea">
-		<form action="/board" method="post" enctype="multipart/form-data">
-			
-			 제목  <input type="text" name="title" size=40> <br />
-			<div id="textareawrap">
-				<textarea name="contents" rows="10" cols="50"></textarea><br />
-			</div>
-			<input type="file" name="filename"> <br />
-			<input type="submit" value="전송합니다">
-			<input type="reset" value="지웁니다">
-		</form>
+	<div id="wrap">
+		<div id="header">
+			<h1> Upload Your Photo </h1>
+		</div>
+		
+		<div id="container">
+			<form action="/board" method="post" enctype="multipart/form-data">
+				<input type="text" name="title" size=40></input><br />
+				<textarea name="contents" rows="10" cols="50"></textarea>
+				<br>
+				<input type="file" name="file" value="그림파일선택">
+				<input type="submit" value="send">
+				<input type="reset" value="reset">
+			</form>
+		</div>
+		
+		<div id="footer">
+			<a href="/"><input type="button" value="main"></a>
+			<a href="/board/list"><input type="button" value="list"></a>
+			<a href="/login/join"><input type="button" value="join"></a>
+		</div>
+		
 	</div>
-</div>
 </body>
+
 </html>
