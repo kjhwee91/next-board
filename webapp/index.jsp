@@ -33,7 +33,7 @@
 		<div id="footer">
 			<a href="/board/form"><input type="button" value="write"></a>
 			<a href="/board/list"><input type="button" value="list"></a>
-			<a href="/login/signupform"><input type="button" value="join"></a>
+			<a href="/login/joinform"><input type="button" value="join"></a>
 		</div>
 	</div>
 

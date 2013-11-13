@@ -7,17 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-		<div id="container">
-			<form action="/login/join" method="post">
-				<input type="text" name="email" value="email"><br>
-				<input type="text" name="strId" value="id"><br>
-				<input type=password name="password" value="password"><br>
-				<input type="submit" value="go!">
-			</form>
-		</div>	
-
-
+	<div id="footer">
+		<a href="/"><input type="button" value="main"></a>
+		<a href="/board/form"><input type="button" value="write"></a>
+		<a href="/board/list"><input type="button" value="list"></a>
+	</div>
 
 </body>
 </html>

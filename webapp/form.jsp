@@ -28,7 +28,7 @@
 		<div id="footer">
 			<a href="/"><input type="button" value="main"></a>
 			<a href="/board/list"><input type="button" value="list"></a>
-			<a href="/login/join"><input type="button" value="join"></a>
+			<a href="/login/joinform"><input type="button" value="join"></a>
 		</div>
 		
 	</div>

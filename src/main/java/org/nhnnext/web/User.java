@@ -11,39 +11,39 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long userId;
+	private Long id;
 	
 	@Column(length=50, nullable=false)
 	private String email;
 	
-	@Column(length=1000, nullable=false)
-	private String contents;
+	@Column(length=50, nullable=false)
+	private String strId;
 	
 	@Column(length=50, nullable=false)
 	private String password;
 	
-	public Long getUserId() {
-		return userId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
+	public String getStrId() {
+		return strId;
+	}
+
+	public void setStrId(String strId) {
+		this.strId = strId;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getContents() {
-		return contents;
-	}
-
-	public void setContents(String contents) {
-		this.contents = contents;
 	}
 
 	public String getPassword() {
