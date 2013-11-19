@@ -1,5 +1,7 @@
 package org.nhnnext.web;
 
+import java.util.List;
+
 import org.nhnnext.repository.BoardRepository;
 import org.nhnnext.repository.CommentRepository;
 import org.slf4j.Logger;
@@ -19,19 +21,25 @@ public class CommentController {
 	@Autowired
 	private BoardRepository boardRepository;
 	
-	
+	// 3주차 요구사항 댓글 쓰기
 	@RequestMapping(value = "/putcomments/{id}", method=RequestMethod.POST)
 	public String create(@PathVariable Long id, String content){
 		Board board = boardRepository.findOne(id);
 		Comment cmt = new Comment(board, content);
 		commentRepository.save(cmt);
 		return "redirect:/board/{id}";
-	}
+	}	
 	
+    
+    @RequestMapping("/commentdelete/{id}")
+    public String delete(@PathVariable Long id) {
+    	
+    	Comment cmt = commentRepository.findOne(id);
+    	Board board = cmt.getBoard();
+    	commentRepository.delete(cmt);
+
+    	return "redirect:/board/" + board.getId();
+    }
+    
 }
-
-
-
-
-
 

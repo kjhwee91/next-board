@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- 1w-m3 사진을 추가할 수 잇는 입력화면과 Controller생성 -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Photo Board</title>

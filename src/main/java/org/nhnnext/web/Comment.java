@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+// 3주차 요구사항 댓글 쓰기
 @Entity
 public class Comment {
 
