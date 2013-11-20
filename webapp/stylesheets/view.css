@@ -10,13 +10,14 @@ img,fieldset{border:0}
 ul,ol{list-style:none}
 em,address{font-style:normal} a{text-decoration:none} a:hover,a:active,a:focus{text-decoration:underline}
 
-
+/*전체*/
 div#wrap{
 	margin-left : auto;
 	margin-right : auto;
 	width : 800px;
 }
 
+/*페이지 제목*/
 #header h1{
 	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
 	font-size : 4em;
@@ -26,6 +27,7 @@ div#wrap{
 	margin-top : 30px;	
 }
 
+/*중심 컨텐츠*/
 #container {
 	border : 1px solid lightgrey;
 	border-radius : 1.5em;
@@ -35,23 +37,8 @@ div#wrap{
 	padding-bottom : 30px;
 }
 
-#container #board img{
-	margin-top : 30px;
-	margin-bottom : 10px;
-	width : 400px;
-	height : auto;
-}
-
-#container #board p {
-	margin-bottom : 30px;
-	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
-	font-size : 1em;
-	font-weight : 100; 		/*default value : 4000 */
-	
-
-}
-
-#container #title {
+/*글 제목*/
+#title {
 	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
 	font-size : 3em;
 	font-style : italic;
@@ -59,7 +46,44 @@ div#wrap{
 	background : yellow;
 }
 
-#container #contents{
+/*글쓴이*/
+#writer {
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size : 1em;
+	font-style : italic;
+	font-weight : 100; 		/*default value : 4000 */
+}
+
+/*지우기, 수정 버튼*/
+#board>p>a>input[type=submit]{
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size : 1em;
+	color : white;
+	font-weight : 100; 		/*default value : 4000 */
+	width:20px;
+	border : solid 1px;
+	border-radius : 5px;
+	background-color : lightgreen;
+} 
+
+/*이미지 크기*/
+#container #board img{
+	margin-top : 30px;
+	margin-bottom : 10px;
+	width : 400px;
+	height : auto;
+}
+
+/*이미지 이름*/
+#filename{
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size : 1.3em;
+	font-style : italic;
+	font-weight : 100; 		/*default value : 4000 */
+}
+
+/*내용*/
+#contents{
 	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
 	font-size : 2em;
 	font-weight : 100; 		/*default value : 4000 */
@@ -74,50 +98,57 @@ div#wrap{
 	padding : 2px 10px 2px 10px;
 }
 
-#container>p {
-	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
-	font-weight : 100; 		/*default value : 4000 */
-}
-
-#container>p>input[type=button]{
-	border : none ;
-	background : lightgrey;
-	font-size : 1em;
-	color : white;
-	font-weight : lighter;
-	padding-left : 10px;
-	padding-right : 10px;
-	padding-top : 3px;
-	padding-bottom : 3px;
-}
-
-#container #commentgroup {
+/*댓글부분*/
+#commentgroup {
 	width : 400px;
 	margin-left : auto;
 	margin-right : auto;	
-	display:block;
 }
 
-#container #commentgroup #commentlist p{
+/*댓글 숨기기 버튼*/
+#commentgroup > p{
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size : 1em;
+	font-weight : 100; 		/*default value : 4000 */
+	letter-spacing : 0.3em;
+	border : 1px solid lightpink;
+	border-radius : 10px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	margin-bottom : 10px;
+}
+
+/*댓글 리스트*/
+#commentlist{
+	display:block;
+	margin-top :25px;
+}
+#commentlist>p{
 	text-align : left;	
 }
 
-#container #commentgroup #commentlist #num {
-	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
-	font-size : 0.8em;
-	font-weight : 300; 		/*default value : 4000 */
-	color : darkred;
-	letter-spacing : 0.05em;
-}
-
-#container #commentgroup #commentlist #comment {
+/*댓글*/
+#cmtcontent {
 	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
 	font-size : 0.8em;
 	font-weight : 300; 		/*default value : 4000 */
 	color : black;
 }
 
-#container #commentgroup form textarea{
+/*댓글 지우기*/
+#commentlist>p>a>input[type=submit]{
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size : 1em;
+	color : white;
+	font-weight : 100; 		/*default value : 4000 */
+	width:20px;
+	border : solid 1px;
+	border-radius : 5px;
+	background-color : lightgreen;
+}
+
+/*댓글쓰는 부분*/
+#commentgroup form textarea{
 	width :400px;
 	height : 100px;
 	border : none;
@@ -127,7 +158,8 @@ div#wrap{
 	font-size : 0.8em;	
 }
 
-#container #commentgroup form input[type=submit]{
+/*댓글 등록*/
+#commentgroup form input[type=submit]{
 	width : 300px;
 	height : 30px;
 	border : 1px solid lightblue;
@@ -140,6 +172,7 @@ div#wrap{
 	letter-spacing : 0.07em;
 }
 
+/*하단*/
 #footer {
 	text-align :center;
 	margin-top : 50px;

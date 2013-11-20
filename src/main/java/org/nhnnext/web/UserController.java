@@ -1,9 +1,10 @@
 package org.nhnnext.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.nhnnext.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,12 +22,24 @@ public class UserController {
 	}
 	
     @RequestMapping(value="", method=RequestMethod.POST)
-	public String login(String userId, String password, Model model) {
-    	// TODO userId에 해당하는 사용를 데이터베이스에서 조회
-    	// TODO 사용자가 입력한 비밀번호와 데이터베이스에서 조회한 사용자 비밀번호가 같은지 확인 
-    	model.addAttribute("userId", userId);
+	public String login(String strId, String password, HttpSession session) {
+    	User user = userRepository.findByStrId(strId);
+    	String savedPassword = user.getPassword();
+    	int login = savedPassword.compareToIgnoreCase(password);
+
+    	if(login==0) {
+        	session.setAttribute("strId", strId);
+        	return "redirect:/";
+        } else {
+        	return "join";
+        }
+    }
+    	
+    @RequestMapping(value="/out")
+    public String logout(HttpSession session){
+    	session.removeAttribute("strId");
     	return "redirect:/";
-	}
+    }
     
     @RequestMapping(value="/joinform")
     public String form(){

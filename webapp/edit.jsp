@@ -14,7 +14,7 @@
 		</div>
 		
 		<div id="container">
-			<form action="/board/saveedit/${board.id}" method="post" enctype="multipart/form-data">
+			<form action="/board/editsave/${board.id}" method="post" enctype="multipart/form-data">
 				<input type="text" name="title" value="${board.title}" size=40></input><br />
 				<textarea name="contents" rows="10" cols="50">${board.contents}</textarea>
 				<br>

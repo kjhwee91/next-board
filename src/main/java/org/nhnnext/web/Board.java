@@ -17,12 +17,15 @@ public class Board {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@Column
+	private String writer;
+	
 	@Column(length=50, nullable=false)
 	private String title;
 	
 	@Column(length=1000, nullable=false)
 	private String contents;
-	
+		
 	@OneToMany(mappedBy="board", fetch=FetchType.EAGER)
 	private List<Comment> comments;
 	
@@ -69,5 +72,16 @@ public class Board {
 		return comments;
 	}
 
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 }
 

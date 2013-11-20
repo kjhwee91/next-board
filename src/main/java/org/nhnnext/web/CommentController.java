@@ -21,15 +21,27 @@ public class CommentController {
 	@Autowired
 	private BoardRepository boardRepository;
 	
-	// 3주차 요구사항 댓글 쓰기
+	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
+	
+	/*
 	@RequestMapping(value = "/putcomments/{id}", method=RequestMethod.POST)
 	public String create(@PathVariable Long id, String content){
+	 	log.debug("comment : {}", cmt);
 		Board board = boardRepository.findOne(id);
 		Comment cmt = new Comment(board, content);
+	 	log.debug("comment : {}", cmt);
 		commentRepository.save(cmt);
 		return "redirect:/board/{id}";
 	}	
+	*/
 	
+	@RequestMapping(value = "/putcomments/{id}.json", method=RequestMethod.POST)
+	public @ResponseBody Comment createJSON(@PathVariable Long id, String content){
+        Board board = boardRepository.findOne(id);
+        Comment comment = new Comment(board, content); 
+        Comment savedComment = commentRepository.save(comment);
+        return savedComment;
+	}
     
     @RequestMapping("/commentdelete/{id}")
     public String delete(@PathVariable Long id) {

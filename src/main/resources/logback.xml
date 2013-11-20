@@ -3,7 +3,24 @@
 <configuration>
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}] %m%n</pattern>
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%F][%thread][%logger{0}] %m%n</pattern>
+					<!--날짜 / 로그레벨 / 로깅이 발생한 파일 이름 / 스레드명 / 로그내용 -->
+					<!-- 참고
+						%c : 카테고리를 출력
+						%p : 로깅 레벨을 출력
+						%m : 로그 내용
+						%d : 로깅 이벤트가 발생한 시간, yyyy-MM-dd, HH:mm:ss 등 시간 형식을 사용
+						%t : 로깅 이벤트를 발생한 스레드의 이름
+						%n : 개행
+						%C : 클래스 이름
+						%F : 로깅이 발생한 파일 이름
+						%I : 로깅이 발생한 호출자 정보
+						%L : 로깅이 발생한 라인수
+						%M : 로깅이 발생한 메소드 이름
+						%r : 애플리케이션 시작 이후부터 로깅이 발생한 시점의 시간
+						%x : 로깅이 발생한 스레드와 관련된 NDC(Nested Diagnostic Context)
+						%X : 로깅이 발생한 스레드와 관련된 MDC(Mapped Diagnostic Context)
+					 -->
 		</encoder>
 	</appender>
 	

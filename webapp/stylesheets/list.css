@@ -35,10 +35,45 @@ div#wrap{
 	padding-top : 30px;
 	margin-left : auto;
 	margin-right : auto;
-
 }
 
-#container #board {
+#container input[type=text],input[type=password]{
+	border : 1px solid lightgrey;
+	width : 600px;
+	height : 30px;
+	padding : 2px;
+	margin-bottom : 10px;
+}
+
+#container textarea {
+	border : 1px solid lightgrey;
+	width : 600px;
+	margin-top:20px;
+	resize : none;
+}
+
+#container input[type=submit]{
+	width : 600px;
+	height : 30px;
+	border : 1px solid lightpink;
+	background : white;
+	margin-top : 10px;
+	margin-bottom : 30px;
+	border-radius : 10px;
+	float : center;
+	font-weight : 100; 		/*default value : 4000 */
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	letter-spacing : 0.07em;
+	font-size : 1em;
+}
+
+#container input[type=file]{
+	height : 20px;
+	border : none;
+	padding : 2px;
+}
+
+.boardsec {
 	float : left;
 	width : 600px;
 	margin-right : auto;
@@ -50,41 +85,41 @@ div#wrap{
 	padding-bottom : 30px;
 }
 
-#container #board #photoSection{
+.photosec {
 	width : 350px;
 	float : left;
 	text-align:center;
 }
 
-#container #board #photoSection img{
+.photosec>img{
 	width : 300px;
 	height : auto;
 }
 
-#container #board #textSection{
+.textsec{
 	width : 250px;
 	float : left;
 }
 
-#container #board #textSection p {
+.textsec>p {
 	margin-bottom : 10px;
 	font-weight : 100; 		/*default value : 4000 */
 	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
 	letter-spacing : 0.07em;
 }
 
-#container #board #textSection p #title{
+.title{
 	background : yellow;
 	font-size : 1.1em;
 
 }
 
-#container #board #textSection p #filename{
+.filename{
 	font-style : italic;
 	font-size : 0.8em;
 }
 
-#container #board #textSection a input[type=button]{
+.textsec>a>input[type=button]{
 	width : 80%;
 	border : 1px solid lightblue;
 	background : white;
@@ -95,6 +130,17 @@ div#wrap{
 	border-radius : 0.5em;
 }
 
+.commentsec {
+	margin-top : 10px;
+}
+
+.commentsec>p{
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size : 0.4em;
+	font-weight : 100; 		/*default value : 4000 */
+	margin-bottom : 5px;
+	color : grey;
+}
 
 #footer {
 	float : left;

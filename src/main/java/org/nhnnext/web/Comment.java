@@ -17,7 +17,11 @@ public class Comment {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@Column
+	private String writer;
+	
 	@ManyToOne
+	@JsonIgnore
 	private Board board;
 
 	@Column(length=1000, nullable=false)
@@ -54,5 +58,14 @@ public class Comment {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
 
 }

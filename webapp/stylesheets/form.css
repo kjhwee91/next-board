@@ -32,7 +32,16 @@ div#wrap{
 	text-align : center;
 }
 
-#container input[type=text]{
+#container>p{
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size : 2em;
+	font-weight : 100; 		/*default value : 4000 */
+	text-align : center;
+	color : darkred;
+	margin-bottom : 10px;
+}
+
+#container input[type=text], input[type=password]{
 	border : 1px solid lightgrey;
 	width : 600px;
 	height : 50px;

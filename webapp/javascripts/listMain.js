@@ -1,7 +1,7 @@
 function initPage () {
 	countComments();
 	registerEvents();
-	 imageViewerHandler();
+	imageViewerHandler();
 	
 }
 

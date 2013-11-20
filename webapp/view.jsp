@@ -4,126 +4,59 @@
 
 <!DOCTYPE html>
 <!-- 2w1m3. 데이터베이스에 추가한 데이터를 조회할 수 있는 페이지를 구현한다. -->
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/view.css"/>
 
-<script>
-
-	window.onload = function initPage(){
-		var cmtHide = document.getElementById('hideCmt');
-		cmtHide.addEventListener('click', hideCmt, false);
-		var cmtDelete = document.getElementById('commentlist').querySelector('a');
-		cmtDelete.addEventListener('click', deleteCmt,false);
-	}
-	
-	function deleteComment(e){
-		e.preventDefault();
-		var commentId = e.currentTarget.getArribute("cmtid");
-		console.log(commentId);
-	}
-	
-	/*
-	function deleteComment(e) {        
-        var commentId = e.currentTarget.getAttribute("data-commentid");
-        var boardId = e.currentTarget.parentNode.parentNode.parentNode.parentNode.getAttribute("data-boardid");
-
-        var url = "/comment/delete"; // 서버에 보낼 주소.
-
-        var data = new FormData();
-        data.append('commentid', commentId);
-        
-        var request = new XMLHttpRequest();
-        request.open("POST",url,true);
-        request.send(data);
-        request.onreadystatechange = function() {
-                if(request.readyState == 4 && request.status == 200) {
-                        console.log("응답이 왔어요~");
-                        var commentsArr = JSON.parse(request.responseText);
-                        var result = "";
-                        commentsArr.forEach(function(value){
-                                result += "<p><span>"+ value.contents + "</span>" +
-                                "<a href=\"javascript:void(0)\" data-commentid=\""+value.id+"\">삭제</a>" +
-                                "</p>";                                
-                        });
-                        document.querySelector("section[data-boardid=\""+boardId+"\"] .commentList").innerHTML = result;
-
-                        initPage();
-     	   }
-        };
-	}
-	*/
-	
-	window.onload = function countComments(){
-		var cmts = document.querySelectorAll('#commentlist>p');
-		console.log(cmts);
-		var currentNode = document.querySelector('#commentlist');
-		var	prtn = currentNode.parentNode;
-		var	sbn = prtn.previousSibling;
-	}
-	
-	function hideCmt(){
-		
-		var cmtSection = document.getElementById('commentgroup'),
-			style = window.getComputedStyle(cmtSection),
-			display = style.getPropertyValue('display');
-		
-		if (cmtSection.style.display == "block"){
-			cmtSection.style.display = "none";
-		} else {
-			cmtSection.style.display = "block";
-		}
-	}
-
-</script>
-
 </head>
 <body>
 	<div id = "wrap">
+	
 		<div id="header">
 			<h1> DETAIL VIEW </h1>	
 		</div>
 		
 		<div id="container">
+		
 			<div id="board">
-				<span id="title">${board.title}</span>
-				<form action = "/board/delete/${board.id}"><input type=submit value=delete></input></form>
-				<form action = "/board/edit/${board.id}"><input type=submit value=edit></input></form>
-				<br>
-				
+				<p>
+				<span id=title>${board.title}</span>
+				<span id=writer>by. ${board.writer}</span>
+				<a href="/board/delete/${board.id}"><input type=submit value=D></input></a>
+				<a href="/board/edit/${board.id}"><input type=submit value=E></input></a>
+				</p>
 				<!-- 3주차 요구사항 상세보기 화면에서 첨부한 파일이 없을 경우 첨부한 이미지를 보이지 않는다. -->
 				<c:choose>
 					<c:when test="${empty board.filename}">
 						<img src="/images/tmp.gif">
-						<p><span id="noimg">no image</span></p>
+						<p id=filename>no image</p>
 					</c:when>
 					<c:otherwise>
 						<img src="/images/${board.filename}"><br>
-						<p><span id="filename">${board.filename}</span></p>
+						<p id=filename>${board.filename}</p>
 					</c:otherwise>
 				</c:choose>
 				<br>
-				<div id="contents">${board.contents}</div>
+				<p id="contents">${board.contents}</p>
 			</div>
+			
 			<div id = "commentgroup">
+				<p>hide comments</p>
 				<!-- 3주차 요구사항 댓글보기 -->
 				<div id="commentlist">
 					<c:set var="num" value="0"/>
 					<c:forEach items="${board.comments}" var="comments">
 						<!-- 댓글 번호 증가시키기, var : 변수, -->
-						<c:set var="num" value="${num+1}"/>
 						<p>
-							<span id="num">C${num}</span>
-							<span id="comment">${comments.content}</span>
-							<a href="/commentdelete/${comments.id}" cmtid="${comments.id}"><input type="submit" value="delete"></a>
+							<span id=cmtcontent>${comments.content}			</span>
+							<a href="/commentdelete/${comments.id}" name="${comments.id}"><input type="submit" value="D"></a>
 						</p>
 					</c:forEach>
 				</div>
 				<!-- 3주차 요구사항 댓글쓰기 -->
-				<form action="/putcomments/${board.id}" method="post"><br>
+				<form action="/putcomments/${board.id}" enctype="multipart/form-data" method="post" value="${board.id}"><br>
 					<textarea name="content" rows="10" cols="50">댓글달기</textarea><br>
 					<input type=submit value=enter>
 				</form>
@@ -136,6 +69,51 @@
 		<a href="/board/form"><input type="button" value="write"></a>
 		<a href="/board/list"><input type="button" value="list"></a>
 	</div>
+<script>
+
+var hideButton = document.querySelector("#commentgroup>p");
+hideButton.onclick = function hideCmt(e){
+	e.preventDefault();
+	var cmtList = document.getElementById('commentlist'),
+		currentStyle = document.defaultView.getComputedStyle(cmtList);
+		currentDisplay = currentStyle.getPropertyValue('display');
+	
+	if(currentDisplay=='block'){
+		cmtList.style.display='none';
+	} else {
+		cmtList.style.display='block';
+	}
+}
+
+var addCmtButton = document.querySelector("#commentgroup>form>input[type=submit]");
+addCmtButton.addEventListener('click',writeComments,false);
+function writeComments(e){
+	e.preventDefault();
+	var eleForm = e.target.form;
+	var oFormData = new FormData(eleForm);
+	
+	var sId = eleForm.getAttribute("value");
+	var url = "/putcomments/"+sId+".json";
+	
+	var request = new XMLHttpRequest();
+	request.open("POST", url, true);
+	console.log(request);
+	
+	request.onreadystatechange=function(){
+		
+		if(request.readyState == 4 && request.status == 200){
+			console.log("응답옴ㅇㅇ");
+			var obj = JSON.parse(request.responseText);
+			var eleCommentList = eleForm.previousElementSibling;
+			eleCommentList.insertAdjacentHTML("beforeend",
+					"<p><span id=cmtcontent>" 
+					+ obj.content 
+					+ "			</span><a href=/commentdelete/"+ obj.id +" name=${comments.id}><input type=submit value=D></a></p>");
+		}
+	};
+	request.send(oFormData);
+}
+</script>
 
 </body>
 </html>
