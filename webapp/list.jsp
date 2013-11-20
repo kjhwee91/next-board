@@ -22,8 +22,13 @@
 		<div id="submitcontent">
 			<c:choose>
 			<c:when test="${not empty sessionScope.strId}"> 
-					<p>Hi! <span>${sessionScope.strId}</span> :)</p>
-					<a href="/login/out"><input type="submit" value="logout!"></a>
+				<form action="/board" method="post" enctype="multipart/form-data">
+					<input type="text" name="title" size=40></input><br />
+					<textarea name="contents" rows="10" cols="50"></textarea>
+					<br>
+					<input type="file" name="file" value="그림파일선택">
+					<input type="submit" value="send">
+				</form>
 			</c:when>
 			<c:otherwise>
 				<form action="/login" method="post">

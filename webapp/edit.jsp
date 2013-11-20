@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Edit Page</title>
+	<link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/form.css"/>
 </head>
 <body>
 	<div id="wrap">
@@ -28,12 +29,10 @@
 						<input type="file" name="file" value="다른 파일 선택"><br>
 					</c:otherwise>
 				</c:choose>
-				<br>---------------------------------------------<br>
 				<input type="submit" value="send">
 				<input type="reset" value="reset">
 			</form>
 		</div>
-		<br>---------------------------------------------<br>
 		<div id="footer">
 			<a href="/"><input type="button" value="main"></a>
 			<a href="/board/list"><input type="button" value="list"></a>
