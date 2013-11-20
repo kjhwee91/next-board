@@ -151,8 +151,7 @@ div#wrap{
 #commentgroup form textarea{
 	width :400px;
 	height : 100px;
-	border : none;
-	background : lightyellow;
+	border : 1px solid lightgrey;
 	resize : none;
 	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
 	font-size : 0.8em;	

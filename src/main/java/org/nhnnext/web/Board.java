@@ -2,6 +2,7 @@ package org.nhnnext.web;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,8 +26,9 @@ public class Board {
 	
 	@Column(length=1000, nullable=false)
 	private String contents;
-		
-	@OneToMany(mappedBy="board", fetch=FetchType.EAGER)
+	
+	// cascade : DB관련 - board를 삭제할 때 같이 삭제하라는 기능
+	@OneToMany(mappedBy="board", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<Comment> comments;
 	
 	private String filename;

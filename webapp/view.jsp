@@ -48,7 +48,6 @@
 				<div id="commentlist">
 					<c:set var="num" value="0"/>
 					<c:forEach items="${board.comments}" var="comments">
-						<!-- 댓글 번호 증가시키기, var : 변수, -->
 						<p>
 							<span id=cmtcontent>${comments.content}			</span>
 							<a href="/commentdelete/${comments.id}" name="${comments.id}"><input type="submit" value="D"></a>
@@ -71,7 +70,8 @@
 	</div>
 <script>
 
-var hideButton = document.querySelector("#commentgroup>p");
+//코멘트 숨기기
+var hideButton = document.querySelectorAll("#commentgroup>p")[0];
 hideButton.onclick = function hideCmt(e){
 	e.preventDefault();
 	var cmtList = document.getElementById('commentlist'),
@@ -85,6 +85,7 @@ hideButton.onclick = function hideCmt(e){
 	}
 }
 
+// 코멘트 JSON으로 작성하기
 var addCmtButton = document.querySelector("#commentgroup>form>input[type=submit]");
 addCmtButton.addEventListener('click',writeComments,false);
 function writeComments(e){

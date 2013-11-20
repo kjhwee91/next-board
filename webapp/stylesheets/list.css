@@ -9,7 +9,7 @@
 	ul,ol{list-style:none}
 	em,address{font-style:normal} a{text-decoration:none} a:hover,a:active,a:focus{text-decoration:underline}
 
-div#wrap{
+#wrap{
 	width : 100%;
 }
 
@@ -19,6 +19,7 @@ div#wrap{
 	margin-right : auto;
 }
 
+/*페이지 제목*/
 #header > h1 {
 	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
 	font-size : 4em;
@@ -32,45 +33,60 @@ div#wrap{
 	width : 600px;
 	border-radius : 1.5em;
 	margin-top : 30px;
-	padding-top : 30px;
 	margin-left : auto;
 	margin-right : auto;
 }
 
-#container input[type=text],input[type=password]{
+#submitcontent {
+	border-bottom : 1px solid lightgrey;
+	margin-bottom : 50px;
+}
+
+#submitcontent p {
+	text-align : center;
+}
+
+/* 로그인 화면(아이디, 비밀번호 입력) 및 제목*/
+#submitcontent input[type=text],input[type=password]{
 	border : 1px solid lightgrey;
 	width : 600px;
 	height : 30px;
 	padding : 2px;
-	margin-bottom : 10px;
+	margin-bottom : 5px;
 }
 
-#container textarea {
-	border : 1px solid lightgrey;
-	width : 600px;
-	margin-top:20px;
-	resize : none;
-}
-
-#container input[type=submit]{
-	width : 600px;
+/*로그인 버튼 및 글 보내기 버튼*/
+#submitcontent p input[type=submit]{
+	width : 500px;
 	height : 30px;
 	border : 1px solid lightpink;
 	background : white;
 	margin-top : 10px;
-	margin-bottom : 30px;
+	margin-bottom : 50px;
 	border-radius : 10px;
-	float : center;
 	font-weight : 100; 		/*default value : 4000 */
 	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
 	letter-spacing : 0.07em;
 	font-size : 1em;
 }
 
-#container input[type=file]{
-	height : 20px;
+#submitcontent form p {
+	text-align : center;
+}
+
+/*본문 입력창*/
+#submitcontent form p textarea {
+	border : 1px solid lightgrey;
+	margin-bottom : 10px;
+	width : 600px;
+	resize : none;
+}
+
+/*파일 첨부*/
+#submitcontent input[type=file]{
+	margin-top : 10px;	
+	height : 30px;
 	border : none;
-	padding : 2px;
 }
 
 .boardsec {
@@ -97,10 +113,11 @@ div#wrap{
 }
 
 .textsec{
-	width : 250px;
+	width : 230px;
 	float : left;
 }
 
+/*텍스트 부분 전반 스타일 */
 .textsec>p {
 	margin-bottom : 10px;
 	font-weight : 100; 		/*default value : 4000 */
@@ -109,28 +126,22 @@ div#wrap{
 }
 
 .title{
-	background : yellow;
+	padding : 3px;
+	border-bottom : 1px dashed darkred;
 	font-size : 1.1em;
-
 }
 
 .filename{
+	padding : 3px;
 	font-style : italic;
 	font-size : 0.8em;
-}
-
-.textsec>a>input[type=button]{
-	width : 80%;
-	border : 1px solid lightblue;
-	background : white;
-	padding : 3px;
-	font-weight : 100; 		/*default value : 4000 */
-	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
-	letter-spacing : 0.07em;
-	border-radius : 0.5em;
+	width : 230px;
+	overflow:hidden; 
+	text-overflow:ellipsis;
 }
 
 .commentsec {
+	padding : 5px;
 	margin-top : 10px;
 }
 
@@ -141,6 +152,21 @@ div#wrap{
 	margin-bottom : 5px;
 	color : grey;
 }
+
+.textsec a span{
+	text-align : center;
+	float : right;
+	font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size : 1em;
+	color : white;
+	font-weight : 100; 		/*default value : 4000 */
+	width : 20px;
+	height : 20px;
+	border : solid 1px;
+	border-radius : 8px;
+	background-color : lightgreen;
+}
+
 
 #footer {
 	float : left;
