@@ -62,7 +62,7 @@
 					<!-- 제목 -->
 					<p class="title">
 						${board.title} 
-						<a href="/board/${board.id}"><span>+</span></a>
+						<a href="/board/${board.id}"><span>M</span></a>
 					</p>
 					<!-- 글내용 -->
 					<p class="content">${board.contents}</p>
